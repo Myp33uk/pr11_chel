@@ -21,7 +21,7 @@ namespace pr11_chel
     /// </summary>
     public partial class MainWindow : Window
     {
-        string expression = "ave a#b a2b a$b a4b a5b a-b acb";
+        string expression = "ave a#b a2b a$b a4b a5b a-b acb aga";
         public MainWindow()
         {
             InitializeComponent();
@@ -41,12 +41,12 @@ namespace pr11_chel
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Regex regex = new Regex(@"a[^a-z && 0-9 %% A-Z]b");
+            Regex second = new Regex(@"a[a-g]a"); //2-ая часть задания
             MatchCollection matchCollection = regex.Matches(expression);
             object[] mas = new object[matchCollection.Count];
             matchCollection.CopyTo(mas, 0);
             resultList.ItemsSource = mas;
             button.IsEnabled = false;
         }
-        Regex second = new Regex(@"a[a-g]a"); //2-ая часть задания
     }
 }
